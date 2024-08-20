@@ -10,9 +10,9 @@
 /*
     Requerimientos a probar:
     1- Se debe inicializar el LCD con la secuencia de configuración correspondiente
-    2- Se debe poder escribir un caracter
-    3- Se debe poder escribir un texto
-    4- Se debe poder limpiar la pantalla del LCD
+    2- Se debe poder limpiar la pantalla del LCD
+    3- Se debe poder escribir un caracter
+    4- Se debe poder escribir un texto
     5- Posicionar cursor
     6- Encender cursor
     7- Apagar cursor
@@ -149,8 +149,17 @@ void test_secuencia_inicio() {
 }
 
 /**
- * @brief Test para verificar la correcta escritura de un caracter
+ * @brief Test para verificar que se limpia la pantalla correctamente,
  * según el requerimiento 2.
+ */
+void test_limpiar_pantalla() {
+    LCD_sendMsg_ExpectAndReturn(CLR_LCD, COMMAND, true);
+    TEST_ASSERT_EQUAL(LCD_clear(), LCD_OK);
+}
+
+/**
+ * @brief Test para verificar la correcta escritura de un caracter
+ * según el requerimiento 3.
  */
 void test_escribir_un_caracter() {
     char caracter = 'a';
