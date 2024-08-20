@@ -197,3 +197,22 @@ void test_escribir_un_texto() {
 
     TEST_ASSERT_EQUAL(LCD_printText(texto), LCD_OK);
 }
+
+/**
+ * @brief Test para verificar que se enciende el cursor en la pantalla LCD,
+ * según requerimiento 6.
+ */
+void test_encender_cursor() {
+    LCD_sendMsg_ExpectAndReturn(DISPLAY_CONTROL | DISPLAY_ON | CURSOR_ON | CURSOR_BLINK, COMMAND,
+                                true);
+    TEST_ASSERT_EQUAL(LCD_cursorOn(), LCD_OK);
+}
+
+/**
+ * @brief Test para verificar que se apaga el cursor en pantalla,
+ * según requerimiento 7.
+ */
+void test_apagar_cursor() {
+    LCD_sendMsg_ExpectAndReturn(DISPLAY_CONTROL | DISPLAY_ON, COMMAND, true);
+    TEST_ASSERT_EQUAL(LCD_cursorOff(), LCD_OK);
+}
