@@ -178,3 +178,22 @@ void test_posicionar_cursor() {
 
     TEST_ASSERT_EQUAL(LCD_setCursor(fila, 0), LCD_OK);
 }
+
+/**
+ * @brief Función que verifica la funcionalidad de escribir un texto en el LCD,
+ * según requerimiento 5.
+ */
+void test_escribir_un_texto() {
+    char texto[] = "Texto de prueba";
+
+    LCD_sendMsg_ExpectAndReturn(CLR_LCD, COMMAND, true);
+    LCD_sendMsg_ExpectAndReturn(SET_CURSOR | LCD_FILA_1, COMMAND, true);
+
+    char * ptrTexto = texto;
+    while ((*ptrTexto) != NULL_CHAR) {
+        char caracter = *ptrTexto++;
+        LCD_sendMsg_ExpectAndReturn(caracter, DATA, true);
+    }
+
+    TEST_ASSERT_EQUAL(LCD_printText(texto), LCD_OK);
+}
