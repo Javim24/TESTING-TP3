@@ -12,7 +12,7 @@
 
 // constantes para cantidad de filas y columnas de un lcd 16x2
 #define LCD_CANTIDAD_COLUMNAS 16
-#define LCD_CANTIDAD_FILAS 2
+#define LCD_CANTIDAD_FILAS    2
 
 // constantes para la posición inicial de cada fila
 #define LCD_FILA_1 0x00
