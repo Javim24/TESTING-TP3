@@ -12,8 +12,8 @@
     1- Se debe inicializar el LCD con la secuencia de configuración correspondiente
     2- Se debe poder limpiar la pantalla del LCD
     3- Se debe poder escribir un caracter
-    4- Se debe poder escribir un texto
-    5- Posicionar cursor
+    4- Se debe poder posicionar cursor
+    5- Se debe poder escribir un texto
     6- Encender cursor
     7- Apagar cursor
 */
@@ -166,4 +166,15 @@ void test_escribir_un_caracter() {
     LCD_sendMsg_ExpectAndReturn(caracter, DATA, true);
 
     TEST_ASSERT_EQUAL(LCD_printChar(caracter), LCD_OK);
+}
+
+/**
+ * @brief Test para verificar la función de posicionar cursor,
+ * según requerimiento 4.
+ */
+void test_posicionar_cursor() {
+    uint8_t fila = LCD_FILA_1;
+    LCD_sendMsg_ExpectAndReturn(SET_CURSOR | fila, COMMAND, true);
+
+    TEST_ASSERT_EQUAL(LCD_setCursor(fila, 0), LCD_OK);
 }
