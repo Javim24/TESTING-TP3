@@ -147,3 +147,14 @@ void test_secuencia_inicio() {
 
     TEST_ASSERT_EQUAL(LCD_init(), LCD_OK);
 }
+
+/**
+ * @brief Test para verificar la correcta escritura de un caracter
+ * según el requerimiento 2.
+ */
+void test_escribir_un_caracter() {
+    char caracter = 'a';
+    LCD_sendMsg_ExpectAndReturn(caracter, DATA, true);
+
+    TEST_ASSERT_EQUAL(LCD_printChar(caracter), LCD_OK);
+}
