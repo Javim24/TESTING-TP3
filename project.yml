@@ -34,6 +34,7 @@
     - +:test/**
     - -:test/support
   :source:
+    - ../../../../PdM_workspace/CONTROL_ACCESO/Drivers/**
     - src/**
   :support:
     - test/support
@@ -43,7 +44,8 @@
   # in order to add common defines:
   #  1) remove the trailing [] from the :common: section
   #  2) add entries to the :common: section (e.g. :test: has TEST defined)
-  :common: &common_defines []
+  :common: &common_defines
+    - STM32F401xE
   :test:
     - *common_defines
     - TEST
